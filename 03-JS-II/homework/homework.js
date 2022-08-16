@@ -40,7 +40,7 @@ function conection(status) {
     return "Away";
   }
   else{
-    return ""
+    return "Offline"
   }
 }
 
@@ -75,16 +75,16 @@ function colors(color) {
   //Usar el statement Switch.
   switch(color){
     case 'blue':
-      return 'This is {color}';
+      return 'This is ' + color;
       break;
     case 'red':
-      return 'This is {color}';
+      return 'This is ' + color;
       break;
     case 'orange':
-      return 'This is {color}';
+      return 'This is ' + color;
       break;  
     case 'green':
-      return 'This is {color}';
+      return 'This is ' + color;
       break;
     default:
       return "Color not found";
@@ -119,7 +119,7 @@ function esEntero(numero) {
   // De lo contrario, devuelve "false"
   // Pista: Puedes resolver esto usando `Math.floor`
   // Tu código:
-  if(typeof numero == "int"){
+  if(Math.floor(numero) == numero){
     return true;
   }
   return false;
@@ -139,6 +139,7 @@ function fizzBuzz(numero) {
   if(numero % 5 == 0){
     return "buzz";
   }
+  return numero;
 }
 
 function operadoresLogicos(num1, num2, num3) {
@@ -148,17 +149,17 @@ function operadoresLogicos(num1, num2, num3) {
   //Si num3 es más grande que num1 y num2, aumentar su valor en 1 y retornar el nuevo valor.
   //0 no es ni positivo ni negativo. Si alguno de los argumentos es 0, retornar "Error".
   //Si no se cumplen ninguna de las condiciones anteriores, retornar false. 
+  if((num1<0)||(num2<0)||(num3<0)){
+    return "Hay negativos";
+  }
   if((num1==0)||(num2==0)||(num3==0)){
     return "Error";
   }
   if((num1>num2)&&(num1>num3)&&(num1>0)){
     return "Número 1 es mayor y positivo";
   }
-  if((num1<0)||(num2<0)||(num3<0)){
-    return "Hay negativos";
-  }
   if((num3>num2)&&(num3>num1)){
-    return num3++;
+    return num3+=1;
   }
   return false;
 }
@@ -170,9 +171,14 @@ function esPrimo(numero) {
   // Pista 2: Puedes resolverlo usando un bucle `for`
   // Nota: Los números 0 y 1 NO son considerados números primos
   let primo=0;
-  for(let i=0;i=numero;i++){
-    if(numero % i == 0){
-      primo++;
+  if((numero==0)||(numero==1)){
+    return false;
+  }
+  else{
+    for(let i=0;i<=numero;i++){
+      if(numero % i == 0){
+        primo++;
+      }
     }
   }
   if(primo<3){
@@ -198,7 +204,7 @@ function tablaDelSeis(){
   //La función devuelve un array con los resultados de la tabla de multiplicar del 6 en orden creciente.
   //Escribe tu código aquí
   let arr = [];   
-  for(let i=0;i=60;i++){
+  for(let i=0;i<=10;i++){
     arr.push(6*i);
   }
   return arr;
@@ -220,6 +226,7 @@ function doWhile(numero) {
   let i=0;
   do{
     numero+=5;
+    i++;
   }while(i<8);
   return numero;
 }
