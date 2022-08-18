@@ -3,7 +3,7 @@
 function devolverPrimerElemento(array) {
   // Devuelve el primer elemento de un  array (pasado por parametro)
   // Tu código:
-  return arr[0];
+  return array[0];
 }
 
 
@@ -27,8 +27,9 @@ function incrementarPorUno(array) {
   // y devuelve el array
   // Tu código:
   for(let i=0;i<array.length;i++){
-    arr[i]+=1;
+    array[i]+=1;
   }
+  return array;
 }
 
 
@@ -37,6 +38,7 @@ function agregarItemAlFinalDelArray(array, elemento) {
   // y devuelve el array
   // Tu código:
   array.push(elemento);
+  return array;
 }
 
 
@@ -45,7 +47,8 @@ function agregarItemAlComienzoDelArray(array, elemento) {
   // y devuelve el array
   // Pista: usa el método `.unshift`
   // Tu código:
-  array.shift(elemento);
+  array.unshift(elemento);
+  return array;
 }
 
 
@@ -57,7 +60,11 @@ function dePalabrasAFrase(palabras) {
   // Tu código:
   let e='';
   for(let i=0;i<palabras.length;i++){
-    e+=' '+palabras[i];
+    if(i==0){
+      e+=palabras[i];
+    }else{
+      e+=' '+palabras[i];
+    }
   }
   return e;
 }
@@ -92,10 +99,11 @@ function promedioResultadosTest(resultadosTest) {
   // "resultadosTest" debe ser una matriz de enteros (int/integers)
   // Itera (en un bucle) los elementos del array, calcula y devuelve el promedio de puntajes
   // Tu código:
+  let e=0;
   for(let i=0;i<resultadosTest.length;i++){
     e+=resultadosTest[i];
   }
-  return e / (resultadosTest.length - 1);
+  return e / resultadosTest.length;
 }
 
 
@@ -130,7 +138,13 @@ function multiplicarArgumentos() {
 function cuentoElementos(arreglo){
   //Realiza una función que retorne la cantidad de los elementos del arreglo cuyo valor es mayor a 18.
   //Escribe tu código aquí
-  return arreglo.length;
+  let p=0;
+  for(let i=0;i<arreglo.length;i++){
+    if(arreglo[i]>18){
+      p+=1;
+    }
+  }
+  return p;
 }
 
 
@@ -139,11 +153,11 @@ function diaDeLaSemana(numeroDeDia) {
   //Realiza una función que dado el número del día de la semana, retorne: Es fin de semana
   //si el día corresponde a Sábado o Domingo y “Es dia Laboral” en caso contrario. 
   //Escribe tu código aquí   
-  if((numero==1)||((numero>6)&&(numero<8))){
+  if((numeroDeDia==1)||((numeroDeDia>6)&&(numeroDeDia<8))){
     return "Es fin de semana";
   }
-  if((numero>1)&&(numero<7)){
-    return "Es dia laboral";
+  if((numeroDeDia>1)&&(numeroDeDia<7)){
+    return "Es dia Laboral";
   }
 } 
 
@@ -152,10 +166,11 @@ function empiezaConNueve(n) {
   //Desarrolle una función que recibe como parámetro un número entero n. Debe retornar true si el entero 
   //inicia con 9 y false en otro caso.
   //Escribe tu código aquí
-  let num = n.value.charAt(0);
-  if(num == '9') {
+  let arr = n.toString();
+  if(arr[0] == '9') {
     return true;
   }
+  return false;
 }
 
 
@@ -183,6 +198,7 @@ function mesesDelAño(array) {
   //Si alguno de los meses no está, devolver: "No se encontraron los meses pedidos"
   // Tu código:
   let e = [];
+  let p=0;
   for(let i=0;i<array.length;i++){
     if(array[i]=='Enero'){
       e.push(array[i]);
@@ -237,15 +253,16 @@ function breakStatement(numero) {
   //Pista: usá el statement 'break'
   // Tu código:
   let e = [];
-  for(let i=0;i<10;i++){
-    numero+=2;
+  let i;
+  for(i=0;i<10;i++){
     if(numero==i){
       break;
     }
+    numero+=2;
     e.push(numero);
   }
   if(i<9){
-    return "Se interrumpió la ejecución";
+    return "Se interrumpió la ejecución"
   }
   return e;
 }
@@ -260,10 +277,10 @@ function continueStatement(numero) {
   // Tu código:
   let e = [];
   for(let i=0;i<10;i++){
-    numero+=2;
     if(i==5){
       continue;
     }
+    numero+=2;
     e.push(numero);
   }
   return e;
