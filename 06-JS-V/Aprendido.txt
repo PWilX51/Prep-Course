@@ -1,0 +1,2 @@
+Prototype: Es la propiedad unica que se le da a una clase sin manipular el objeto en concreto.
+constructor: Es el nombre de la clase.
